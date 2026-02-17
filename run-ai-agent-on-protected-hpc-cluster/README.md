@@ -1,4 +1,4 @@
-# How to run the Pi coding agent on a protected HPC cluster 
+# How to run the a coding agent on a protected HPC cluster 
 
 ## Run a 80B-parameter open-source coding LLM on a H200 GPU compute node
 
