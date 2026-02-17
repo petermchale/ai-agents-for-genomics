@@ -1,4 +1,4 @@
-# How to run the a coding agent on a protected HPC cluster 
+# How to run  a coding agent on a protected HPC cluster 
 
 ## Run a 80B-parameter open-source coding LLM on a H200 GPU compute node
 
@@ -51,11 +51,11 @@ At this point, one can kill the background ssh process on the H200 node:
 pgrep -f "ssh.*11434" | xargs kill
 ```
 
-## Install, configure, and run Pi coding agent on the "agent node"
+## Install, configure, and run a coding agent on the "agent node"
 
-https://buildwithpi.ai
+### Install `npm`
 
-1. Download Node.js (https://nodejs.org/en/download), using the Linux instructions, reproduced here as of Feb 10, 2026:
+Download Node.js (https://nodejs.org/en/download), using the Linux instructions, reproduced here as of Feb 10, 2026:
 ```
 # Download and install nvm:
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
@@ -72,20 +72,26 @@ node -v # Should print "v24.13.1".
 # Verify npm version:
 npm -v # Should print "11.8.0".
 ```
-3. Install Pi, without `-g` option (https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent#quick-start):
-  ```
-  npm install @mariozechner/pi-coding-agent
-  ```
-3. Add Pi CLI entry point to `PATH`:
+
+### Install `pi` coding agent 
+
+https://buildwithpi.ai
+
+1. Install: 
 ```
-export PATH="$HOME/node_modules/.bin:$PATH"
-```
-4. Open and close `pi` to establish the directory structure required for configuration (see next step)
-```
-pi # followed by ctrl-d to shut down
+mkdir pi-agent
+cd pi-agent
+npm init -y
+npm install @mariozechner/pi-coding-agent # https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent#quick-start
+export PATH="$PWD/node_modules/.bin:$PATH"
 ```
 
-5. Configure `pi` to use `qwen3-coder-next:q8_0` by pasting the following into `$HOME/.pi/agent/models.json` (from: https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/models.md#full-example)
+2. Establish the directory structure required for configuration: 
+```
+pi # followed by ctrl-d to shut down 
+```
+
+3. Configure `pi` to use `qwen3-coder-next:q8_0` by pasting the following into `$HOME/.pi/agent/models.json` (from: https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/models.md#full-example)
 ```
 {
   "providers": {
@@ -108,4 +114,9 @@ pi # followed by ctrl-d to shut down
   }
 }
 ```
-6. Run the agent by typing `pi` at the command line. Your coding agent should now be connected to `qwen3-coder-next:q8_0`. 
+
+4. Run the agent by typing `pi` at the command line. Your coding agent should now be connected to `qwen3-coder-next:q8_0`. 
+
+### Install `opencode` coding agent 
+
+
