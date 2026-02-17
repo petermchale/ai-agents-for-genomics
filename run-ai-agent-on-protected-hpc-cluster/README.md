@@ -119,4 +119,43 @@ pi # followed by ctrl-d to shut down
 
 ### Install `opencode` coding agent 
 
+1. Install:
+```
+mkdir opencode-cli 
+cd opencode-cli
+npm init -y
+npm install opencode-ai
+export PATH="$PWD/node_modules/.bin:$PATH"
+# https://github.com/anomalyco/opencode/issues/8959#issuecomment-3830917497 : 
+export OPENCODE_DISABLE_DEFAULT_PLUGINS=true
+```
+
+2. Establish the directory structure required for configuration: 
+```
+opencode # followed by ctrl-c to shut down 
+```
+
+3. Configure `opencode` to use `qwen3-coder-next:q8_0` by pasting the following into `$HOME/.config/opencode/opencode.json` (from: https://docs.ollama.com/integrations/opencode#manual-setup)
+
+```
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (local)",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3-coder-next:q8_0": {
+          "name": "qwen3-coder-next:q8_0 (local)"
+        }
+      }
+    }
+  }
+}
+```
+
+4. Run the agent by typing `opencode` at the command line. Your coding agent should now be connected to `qwen3-coder-next:q8_0`. 
 
