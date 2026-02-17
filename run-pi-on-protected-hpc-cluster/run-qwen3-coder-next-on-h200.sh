@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --account=rai-gpu-rw
 #SBATCH --partition=rai-gpu-rw
-#SBATCH --time=3-00:00:00        # Request 3 days
+#SBATCH --time=7-00:00:00        # Request 7 days
 #SBATCH --gres=gpu:h200:1
 #SBATCH --cpus-per-task=16       # Multiple CPUs for snappy model loading and prompt processing
 #SBATCH --mem=128G               # System RAM (separate from GPU VRAM)

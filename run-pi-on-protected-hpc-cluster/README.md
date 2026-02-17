@@ -6,7 +6,7 @@
 * CfgTRES: The total resources configured on the node (e.g., gres/gpu=4).
 * AllocTRES: The resources currently allocated to running jobs. If you see gres/gpu=2, it means 2 GPUs are taken and the rest are free.
 * GresUsed: This often lists the specific indices (e.g., gpu:2(IDX:0-1)) so you know exactly which physical cards are busy.
-2. If a GPU is free, run `ollama` on the H200 with enough resources to accommodate `qwen3-coder-next`: 
+2. Submit a batch job to run `ollama` on the H200 with enough resources to accommodate `qwen3-coder-next`: 
 ```
 sbatch run-qwen3-coder-next-on-h200.sh
 ``` 
@@ -27,7 +27,7 @@ tmux new -s reverse_ssh_tunnel
 ```
 2. Request an allocation on the H200 node, by running: 
 ```
-salloc --nodes=1 --ntasks=1 --account=rai-gpu-rw --partition=rai-gpu-rw --time=3-00:00:00 --nodelist=rw236
+salloc --nodes=1 --ntasks=1 --account=rai-gpu-rw --partition=rai-gpu-rw --time=7-00:00:00 --nodelist=rw236
 ```     
 3. Set up a reverse ssh tunnel from the H200 node to the agent node (the interactive machine you wish to run the coding agent on; `father` in this example): 
 ```
