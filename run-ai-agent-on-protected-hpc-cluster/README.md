@@ -117,6 +117,12 @@ pi # followed by ctrl-d to shut down
 
 4. Run the agent by typing `pi` at the command line. Your coding agent should now be connected to `qwen3-coder-next:q8_0`. 
 
+5. You can update `pi` by: 
+```
+npm install @mariozechner/pi-coding-agent@latest
+npm ls @mariozechner/pi-coding-agent
+```
+
 ### Install `opencode` coding agent 
 
 1. Install:
